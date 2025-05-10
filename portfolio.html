@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikhitha Chittineni | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #ff69b4;
+      --secondary: #ffb6c1;
+      --accent: #e53170;
+      --dark: #16161a;
+      --text: #fadadd;
+      --light: #fffffe;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 1s ease forwards;
+}
+
+.scroll-reveal.delay-1 {
+  animation-delay: 0.2s;
+}
+.scroll-reveal.delay-2 {
+  animation-delay: 0.4s;
+}
+.scroll-reveal.delay-3 {
+  animation-delay: 0.6s;
+}
+.scroll-reveal.delay-4 {
+  animation-delay: 0.8s;
+}
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .side-nav {
+      position: fixed;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      z-index: 2000;
+    }
+
+    .side-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .side-nav ul li a {
+      font-size: 1.5rem;
+      color: var(--text);
+      transition: 0.3s;
+    }
+
+    .side-nav ul li a:hover {
+      color: var(--primary);
+    }
+
+    .nav-container {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(22, 22, 26, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 5%;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-end;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 120px 5% 60px;
+      display: flex;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .hero-text {
+      flex: 1 1 55%;
+      min-width: 300px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      color: var(--light);
+    }
+
+    .hero h2 {
+      font-size: 1.2rem;
+      color: var(--light pink);
+      margin-top: 1rem;
+    }
+
+    .cta-buttons {
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--light);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .hero-lists {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .hero-image {
+      flex: 1 1 35%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      object-fit: cover;
+    }
+
+    .about, .projects, .contact {
+      padding: 6rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 15px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background-color: #222;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: filter 0.4s ease;
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.65);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-card:hover img {
+      filter: blur(3px) brightness(0.75);
+    }
+
+    .contact {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      max-width: 700px;
+      margin: 6rem auto;
+      padding: 4rem 2rem;
+    }
+
+    .contact h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .contact a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .contact a:hover {
+      color: var(--primary);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Side Navigation -->
+  <div class="side-nav">
+    <ul>
+      <li><a href="#home"><i class="fas fa-home"></i></a></li>
+      <li><a href="#about"><i class="fas fa-user"></i></a></li>
+      <li><a href="#projects"><i class="fas fa-code"></i></a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i></a></li>
+    </ul>
+  </div>
+
+  <!-- Top Nav -->
+  <nav class="nav-container">
+    <div class="nav-links">
+      <a href="#about">About |</a>
+      <a href="#projects">Projects |</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="scroll-reveal">Nikhitha Chittineni</h1>
+        <h2 class="scroll-reveal delay-1">Ambitious Computer Science and Engineering student specializing in Data Science with expertise in Python, Java, SQL, and Web Development. Looking forward to working with emerging technologies and dynamic environments to enhance my programming, analytical, and communication skills.</h2>
+        <div class="cta-buttons">
+          <a href="nikhitha_resume.pdf" download class="btn btn-primary">
+            <i class="fas fa-download"></i> Download CV
+          </a>
+        </div>
+                        </div>      <div class="hero-image">
+        <img src="nikki,jpg.jpg" alt="Nikhitha Chittineni" />
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+
+  <section id="about" class="about">
+    <div class="about-content">
+
+      <div class="about-text">
+<center><h1 class="scroll-reveal" style=" color: white;">About Me</h1></center><br>
+        <p class="scroll-reveal delay-2">Hello! I'm a passionate student with interest in technology, Artificial Intelligence and Machine Learning. Currently pursuing my degree in Computer Science. I've worked on several projects including fake news detection using ML and other web applications.</p>
+                <p class="scroll-reveal delay-2">Apart from studies I scored good as an even organizer in SICO. I'm also a Member in the college Throwball Team, Badmintion.I've also participated in several dance competions(classical),Elocutions,Literary,Group discussion and many other technical as well as non technical events. I love participating in competitions and taking on new challenges!</p>
+      </div>
+      <div class="skills">
+        <h3 style="color: white;">Skills</h3>
+        <ul>
+          <li>Python, Java, SQL</li>
+          <li>Machine Learning</li>
+          <li>Web Development</li>
+          <li>Data Analysis</li>
+        </ul><br>
+	<div class=" Soft skills">
+        <h3 style="color: white;">Skills</h3>
+        <ul>
+          <li>Content Strategy</li>
+          <li>Efficient Communication</li>
+          <li>Creativity</li>
+          <li>Adaptability</li>
+        </ul>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <center><h2 class="scroll-reveal delay-1">Featured Projects</h2></center><br><br>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-image">
+          <img src="fknp1.jpg" alt="Fake News Detection">
+          <div class="project-overlay">
+            <h3>Fake News Detection Using Roberta along with Linguistic Features</h3>
+            <p>Developed a Fake News Detection model using RoBERTa and SHAP for accurate classification and explainability. Integrated NLP with spaCy to enhance contextual analysis and ensure transparent AI decision-making.</p>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="bookp2.jpg" alt="Books App">
+          <div class="project-overlay">
+            <h3>Books Finder Application</h3>
+            <p>Created a Book Finder web app using Flask and REST APIs to fetch and display book details. Enabled users to search, save, and read book information in a clean, interactive interface.</p>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="voicep3.jpg" alt="Voice Diary">
+          <div class="project-overlay">
+            <h3>Encrypted voice-activated diary</h3>
+            <p>Developed a voice-activated diary using Flask, SpeechRecognition, and PyCryptodome to transcribe and securely encrypt user entries. Integrated both keyword-based and manual recording controls with a interactive web interface.</p>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="jobp4.jpg" alt="Job Recommender">
+          <div class="project-overlay">
+            <h3>AI Job Recommendation</h3>
+            <p>Developed a full-stack AI-based job recommendation portal using machine learning and NLP to match users with relevant roles. Supported both manual skill entry and resume upload for dynamic profile analysis, enabling personalized career suggestions in real time.</p>
+          </div>
+        </div>
+      </div>
+
+</div>
+  </section>
+
+  <!-- Contact Section -->
+<CENTER><h2 class="scroll-reveal delay-10">Let's Connect!</h2><center>
+
+  <section id="contact" class="contact">
+     <div style="display: flex; flex-direction: column; align-items: center; gap: 1.2rem;">
+      <a href="mailto:nikhithachittineni@gmail.com"><i class="fas fa-envelope"></i> nikhithachittineni@gmail.com</a>
+      <a href="https://linkedin.com/in/nikhitha-chittineni" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/nikhitha123" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+  </section>
+
+</body>
+</html>
